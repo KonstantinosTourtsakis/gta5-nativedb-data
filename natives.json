@@ -1155,7 +1155,7 @@
 			"comment": "This native does absolutely nothing, just a nullsub",
 			"params": [
 				{
-					"type": "bool",
+					"type": "BOOL",
 					"name": "InChargeOfAudio"
 				}
 			],
@@ -1513,7 +1513,7 @@
 					"name": "soundSetHash"
 				},
 				{
-					"type": "bool",
+					"type": "BOOL",
 					"name": "bOverNetwork"
 				},
 				{
@@ -39318,24 +39318,64 @@
 			"comment": "See description of `ADD_STUNT_JUMP_ANGLED` for detailed info. The only difference really is this one does not have the radius (or angle, not sure) floats parameters for entry and landing zones.",
 			"params": [
 				{
-					"type": "Vector3",
-					"name": "startMin"
+					"type": "float",
+					"name": "startMinX"
 				},
 				{
-					"type": "Vector3",
-					"name": "startMax"
+					"type": "float",
+					"name": "startMinY"
 				},
 				{
-					"type": "Vector3",
-					"name": "endMin"
+					"type": "float",
+					"name": "startMinZ"
 				},
 				{
-					"type": "Vector3",
-					"name": "endMax"
+					"type": "float",
+					"name": "startMaxX"
 				},
 				{
-					"type": "Vector3",
-					"name": "cameraPos"
+					"type": "float",
+					"name": "startMaxY"
+				},
+				{
+					"type": "float",
+					"name": "startMaxZ"
+				},
+				{
+					"type": "float",
+					"name": "endMinX"
+				},
+				{
+					"type": "float",
+					"name": "endMinY"
+				},
+				{
+					"type": "float",
+					"name": "endMinZ"
+				},
+				{
+					"type": "float",
+					"name": "endMaxX"
+				},
+				{
+					"type": "float",
+					"name": "endMaxY"
+				},
+				{
+					"type": "float",
+					"name": "endMaxZ"
+				},
+				{
+					"type": "float",
+					"name": "cameraPosX"
+				},
+				{
+					"type": "float",
+					"name": "cameraPosY"
+				},
+				{
+					"type": "float",
+					"name": "cameraPosZ"
 				},
 				{
 					"type": "int",
@@ -39359,32 +39399,72 @@
 			"comment": "Creates a new stunt jump.\n\nThe radius1 and radius2 might actually not be a radius at all, but that's what it seems to me testing them in-game. But they may be 'angle' floats instead, considering this native is named ADD_STUNT_JUMP_**ANGLED**.\n\nInfo about the specific 'parameter sections':\n\n\n**x1, y1, z1, x2, y2, z2 and radius1:**\n\nFirst coordinates are for the jump entry area, and the radius that will be checked around that area. So if you're not exactly within the coordinates, but you are within the outter radius limit then it will still register as entering the stunt jump. Note as mentioned above, the radius is just a guess, I'm not really sure about it's exact purpose.\n\n\n**x3, y3, z3, x4, y4, z4 and radius2:**\n\nNext part is the landing area, again starting with the left bottom (nearest to the stunt jump entry zone) coordinate, and the second one being the top right furthest away part of the landing area. Followed by another (most likely) radius float, this is usually slightly larger than the entry zone 'radius' float value, just because you have quite a lot of places where you can land (I'm guessing).\n\n\n**camX, camY and camZ:**\n\nThe final coordinate in this native is the Camera position. Rotation and zoom/FOV is managed by the game itself, you just need to provide the camera location.\n\n\n**unk1, unk2 and unk3:**\n\nNot sure what these are for, but they're always `150, 0, 0` in decompiled scripts.\n\nHere is a list of almost all of the stunt jumps from GTA V (taken from decompiled scripts): https://pastebin.com/EW1jBPkY",
 			"params": [
 				{
-					"type": "Vector3",
-					"name": "startMin"
+					"type": "float",
+					"name": "startMinX"
 				},
 				{
-					"type": "Vector3",
-					"name": "startMax"
+					"type": "float",
+					"name": "startMinY"
+				},
+				{
+					"type": "float",
+					"name": "startMinZ"
+				},
+				{
+					"type": "float",
+					"name": "startMaxX"
+				},
+				{
+					"type": "float",
+					"name": "startMaxY"
+				},
+				{
+					"type": "float",
+					"name": "startMaxZ"
 				},
 				{
 					"type": "float",
 					"name": "startWidth"
 				},
 				{
-					"type": "Vector3",
-					"name": "endMin"
+					"type": "float",
+					"name": "endMinX"
 				},
 				{
-					"type": "Vector3",
-					"name": "endMax"
+					"type": "float",
+					"name": "endMinY"
+				},
+				{
+					"type": "float",
+					"name": "endMinZ"
+				},
+				{
+					"type": "float",
+					"name": "endMaxX"
+				},
+				{
+					"type": "float",
+					"name": "endMaxY"
+				},
+				{
+					"type": "float",
+					"name": "endMaxZ"
 				},
 				{
 					"type": "float",
 					"name": "endWidth"
 				},
 				{
-					"type": "Vector3",
-					"name": "cameraPos"
+					"type": "float",
+					"name": "cameraPosX"
+				},
+				{
+					"type": "float",
+					"name": "cameraPosY"
+				},
+				{
+					"type": "float",
+					"name": "cameraPosZ"
 				},
 				{
 					"type": "int",
@@ -40219,12 +40299,28 @@
 			"comment": "",
 			"params": [
 				{
-					"type": "Vector3",
-					"name": "minWS"
+					"type": "float",
+					"name": "minWS_X"
 				},
 				{
-					"type": "Vector3",
-					"name": "maxWS"
+					"type": "float",
+					"name": "minWS_Y"
+				},
+				{
+					"type": "float",
+					"name": "minWS_Z"
+				},
+				{
+					"type": "float",
+					"name": "maxWS_X"
+				},
+				{
+					"type": "float",
+					"name": "maxWS_Y"
+				},
+				{
+					"type": "float",
+					"name": "maxWS_Z"
 				},
 				{
 					"type": "float",
@@ -57028,8 +57124,16 @@
 					"name": "retNumber"
 				},
 				{
-					"type": "Vector3",
-					"name": "pos"
+					"type": "float",
+					"name": "posX"
+				},
+				{
+					"type": "float",
+					"name": "posY"
+				},
+				{
+					"type": "float",
+					"name": "posZ"
 				},
 				{
 					"type": "float",
@@ -59405,8 +59509,16 @@
 					"name": "bFriendly"
 				},
 				{
-					"type": "Vector3",
-					"name": "vPosition"
+					"type": "float",
+					"name": "vPositionX"
+				},
+				{
+					"type": "float",
+					"name": "vPositionY"
+				},
+				{
+					"type": "float",
+					"name": "vPositionZ"
 				}
 			],
 			"return_type": "BOOL",
@@ -64546,12 +64658,28 @@
 					"name": "fGravityFactor"
 				},
 				{
-					"type": "Vector3",
-					"name": "TranslationalDamping"
+					"type": "float",
+					"name": "TranslationalDamping_X"
 				},
 				{
-					"type": "Vector3",
-					"name": "RotationalDamping"
+					"type": "float",
+					"name": "TranslationalDamping_Y"
+				},
+				{
+					"type": "float",
+					"name": "TranslationalDamping_Z"
+				},
+				{
+					"type": "float",
+					"name": "RotationalDamping_X"
+				},
+				{
+					"type": "float",
+					"name": "RotationalDamping_Y"
+				},
+				{
+					"type": "float",
+					"name": "RotationalDamping_Z"
 				},
 				{
 					"type": "float",
@@ -68166,12 +68294,28 @@
 			"comment": "",
 			"params": [
 				{
-					"type": "Vector3",
-					"name": "VecCoorsMin"
+					"type": "float",
+					"name": "VecCoorsMinX"
 				},
 				{
-					"type": "Vector3",
-					"name": "VecCoorsMax"
+					"type": "float",
+					"name": "VecCoorsMinY"
+				},
+				{
+					"type": "float",
+					"name": "VecCoorsMinZ"
+				},
+				{
+					"type": "float",
+					"name": "VecCoorsMaxX"
+				},
+				{
+					"type": "float",
+					"name": "VecCoorsMaxY"
+				},
+				{
+					"type": "float",
+					"name": "VecCoorsMaxZ"
 				},
 				{
 					"type": "BOOL",
@@ -68245,12 +68389,28 @@
 					"name": "iAdjustment"
 				},
 				{
-					"type": "Vector3",
-					"name": "vMin"
+					"type": "float",
+					"name": "vMinX"
 				},
 				{
-					"type": "Vector3",
-					"name": "vMax"
+					"type": "float",
+					"name": "vMinY"
+				},
+				{
+					"type": "float",
+					"name": "vMinZ"
+				},
+				{
+					"type": "float",
+					"name": "vMaxX"
+				},
+				{
+					"type": "float",
+					"name": "vMaxY"
+				},
+				{
+					"type": "float",
+					"name": "vMaxZ"
 				}
 			],
 			"return_type": "void",
@@ -68850,12 +69010,28 @@
 			"comment": "",
 			"params": [
 				{
-					"type": "Vector3",
-					"name": "vPosition"
+					"type": "float",
+					"name": "vPosition_X"
 				},
 				{
-					"type": "Vector3",
-					"name": "vSizeXYZ"
+					"type": "float",
+					"name": "vPosition_Y"
+				},
+				{
+					"type": "float",
+					"name": "vPosition_Z"
+				},
+				{
+					"type": "float",
+					"name": "vSizeXYZ_X"
+				},
+				{
+					"type": "float",
+					"name": "vSizeXYZ_Y"
+				},
+				{
+					"type": "float",
+					"name": "vSizeXYZ_Z"
 				},
 				{
 					"type": "float",
@@ -68883,12 +69059,28 @@
 					"name": "iObjectId"
 				},
 				{
-					"type": "Vector3",
-					"name": "vPosition"
+					"type": "float",
+					"name": "vPosition_X"
 				},
 				{
-					"type": "Vector3",
-					"name": "vSizeXYZ"
+					"type": "float",
+					"name": "vPosition_Y"
+				},
+				{
+					"type": "float",
+					"name": "vPosition_Z"
+				},
+				{
+					"type": "float",
+					"name": "vSizeXYZ_X"
+				},
+				{
+					"type": "float",
+					"name": "vSizeXYZ_Y"
+				},
+				{
+					"type": "float",
+					"name": "vSizeXYZ_Z"
 				},
 				{
 					"type": "float",
@@ -72026,8 +72218,16 @@
 					"name": "ped"
 				},
 				{
-					"type": "Vector3",
-					"name": "scrVectorCenterCoords"
+					"type": "float",
+					"name": "scrVectorCenterCoordsX"
+				},
+				{
+					"type": "float",
+					"name": "scrVectorCenterCoordsY"
+				},
+				{
+					"type": "float",
+					"name": "scrVectorCenterCoordsZ"
 				},
 				{
 					"type": "float",
@@ -75121,12 +75321,28 @@
 					"name": "fGroundHeight"
 				},
 				{
-					"type": "Vector3",
-					"name": "vecGrab1"
+					"type": "float",
+					"name": "vecGrab1_X"
 				},
 				{
-					"type": "Vector3",
-					"name": "vecGrab2"
+					"type": "float",
+					"name": "vecGrab1_Y"
+				},
+				{
+					"type": "float",
+					"name": "vecGrab1_Z"
+				},
+				{
+					"type": "float",
+					"name": "vecGrab2_X"
+				},
+				{
+					"type": "float",
+					"name": "vecGrab2_Y"
+				},
+				{
+					"type": "float",
+					"name": "vecGrab2_Z"
 				}
 			],
 			"return_type": "BOOL",
@@ -75307,12 +75523,28 @@
 					"name": "ped"
 				},
 				{
-					"type": "Vector3",
-					"name": "Vec1"
+					"type": "float",
+					"name": "Vec1_X"
 				},
 				{
-					"type": "Vector3",
-					"name": "Vec2"
+					"type": "float",
+					"name": "Vec1_Y"
+				},
+				{
+					"type": "float",
+					"name": "Vec1_Z"
+				},
+				{
+					"type": "float",
+					"name": "Vec2_X"
+				},
+				{
+					"type": "float",
+					"name": "Vec2_Y"
+				},
+				{
+					"type": "float",
+					"name": "Vec2_Z"
 				},
 				{
 					"type": "float",
@@ -75455,12 +75687,28 @@
 					"name": "attachPed"
 				},
 				{
-					"type": "Vector3",
-					"name": "Vec1"
+					"type": "float",
+					"name": "Vec1_X"
 				},
 				{
-					"type": "Vector3",
-					"name": "Vec2"
+					"type": "float",
+					"name": "Vec1_Y"
+				},
+				{
+					"type": "float",
+					"name": "Vec1_Z"
+				},
+				{
+					"type": "float",
+					"name": "Vec2_X"
+				},
+				{
+					"type": "float",
+					"name": "Vec2_Y"
+				},
+				{
+					"type": "float",
+					"name": "Vec2_Z"
 				},
 				{
 					"type": "float",
@@ -75488,8 +75736,16 @@
 					"name": "ped"
 				},
 				{
-					"type": "Vector3",
-					"name": "vDefendFromPos"
+					"type": "float",
+					"name": "vDefendFromPosX"
+				},
+				{
+					"type": "float",
+					"name": "vDefendFromPosY"
+				},
+				{
+					"type": "float",
+					"name": "vDefendFromPosZ"
 				},
 				{
 					"type": "BOOL",
@@ -76455,8 +76711,16 @@
 					"name": "PedIndex"
 				},
 				{
-					"type": "Vector3",
-					"name": "vDangerPosition"
+					"type": "float",
+					"name": "vDangerPositionX"
+				},
+				{
+					"type": "float",
+					"name": "vDangerPositionY"
+				},
+				{
+					"type": "float",
+					"name": "vDangerPositionZ"
 				}
 			],
 			"return_type": "BOOL",
@@ -76492,8 +76756,16 @@
 					"name": "PedIndex"
 				},
 				{
-					"type": "Vector3",
-					"name": "vDangerPosition"
+					"type": "float",
+					"name": "vDangerPositionX"
+				},
+				{
+					"type": "float",
+					"name": "vDangerPositionY"
+				},
+				{
+					"type": "float",
+					"name": "vDangerPositionZ"
 				}
 			],
 			"return_type": "BOOL",
@@ -76509,8 +76781,16 @@
 					"name": "PedIndex"
 				},
 				{
-					"type": "Vector3",
-					"name": "vReactPosition"
+					"type": "float",
+					"name": "vReactPositionX"
+				},
+				{
+					"type": "float",
+					"name": "vReactPositionY"
+				},
+				{
+					"type": "float",
+					"name": "vReactPositionZ"
 				}
 			],
 			"return_type": "BOOL",
@@ -76555,8 +76835,16 @@
 					"name": "PedIndex"
 				},
 				{
-					"type": "Vector3",
-					"name": "vDangerPosition"
+					"type": "float",
+					"name": "vDangerPositionX"
+				},
+				{
+					"type": "float",
+					"name": "vDangerPositionY"
+				},
+				{
+					"type": "float",
+					"name": "vDangerPositionZ"
 				}
 			],
 			"return_type": "BOOL",
@@ -79364,8 +79652,16 @@
 			"comment": "",
 			"params": [
 				{
-					"type": "Vector3",
-					"name": "vSearchOrigin"
+					"type": "float",
+					"name": "vSearchOriginX"
+				},
+				{
+					"type": "float",
+					"name": "vSearchOriginY"
+				},
+				{
+					"type": "float",
+					"name": "vSearchOriginZ"
 				},
 				{
 					"type": "float",
@@ -80594,20 +80890,52 @@
 					"name": "boundIdx"
 				},
 				{
-					"type": "Vector3",
-					"name": "pt0"
+					"type": "float",
+					"name": "pt0_X"
 				},
 				{
-					"type": "Vector3",
-					"name": "pt1"
+					"type": "float",
+					"name": "pt0_Y"
 				},
 				{
-					"type": "Vector3",
-					"name": "pt2"
+					"type": "float",
+					"name": "pt0_Z"
 				},
 				{
-					"type": "Vector3",
-					"name": "pt3"
+					"type": "float",
+					"name": "pt1_X"
+				},
+				{
+					"type": "float",
+					"name": "pt1_Y"
+				},
+				{
+					"type": "float",
+					"name": "pt1_Z"
+				},
+				{
+					"type": "float",
+					"name": "pt2_X"
+				},
+				{
+					"type": "float",
+					"name": "pt2_Y"
+				},
+				{
+					"type": "float",
+					"name": "pt2_Z"
+				},
+				{
+					"type": "float",
+					"name": "pt3_X"
+				},
+				{
+					"type": "float",
+					"name": "pt3_Y"
+				},
+				{
+					"type": "float",
+					"name": "pt3_Z"
 				}
 			],
 			"return_type": "void",
@@ -80833,8 +81161,16 @@
 					"name": "entity"
 				},
 				{
-					"type": "Vector3",
-					"name": "impactPosition"
+					"type": "float",
+					"name": "impactPositionX"
+				},
+				{
+					"type": "float",
+					"name": "impactPositionY"
+				},
+				{
+					"type": "float",
+					"name": "impactPositionZ"
 				},
 				{
 					"type": "float",
@@ -84307,12 +84643,28 @@
 			"comment": "Only 1 match. ob_sofa_michael.\n\nPLAYER::PLAYER_ATTACH_VIRTUAL_BOUND(-804.5928f, 173.1801f, 71.68436f, 0f, 0f, 0.590625f, 1f, 0.7f);1.0.335.2, 1.0.350.1/2, 1.0.372.2, 1.0.393.2, 1.0.393.4, 1.0.463.1;",
 			"params": [
 				{
-					"type": "Vector3",
-					"name": "pos"
+					"type": "float",
+					"name": "posX"
 				},
 				{
-					"type": "Vector3",
-					"name": "rot"
+					"type": "float",
+					"name": "posY"
+				},
+				{
+					"type": "float",
+					"name": "posZ"
+				},
+				{
+					"type": "float",
+					"name": "rotX"
+				},
+				{
+					"type": "float",
+					"name": "rotY"
+				},
+				{
+					"type": "float",
+					"name": "rotZ"
 				},
 				{
 					"type": "float",
@@ -94445,12 +94797,28 @@
 			"comment": "Always returns zero.",
 			"params": [
 				{
-					"type": "Vector3",
-					"name": "pos"
+					"type": "float",
+					"name": "posX"
 				},
 				{
-					"type": "Vector3",
-					"name": "dir"
+					"type": "float",
+					"name": "posY"
+				},
+				{
+					"type": "float",
+					"name": "posZ"
+				},
+				{
+					"type": "float",
+					"name": "dirX"
+				},
+				{
+					"type": "float",
+					"name": "dirY"
+				},
+				{
+					"type": "float",
+					"name": "dirZ"
 				},
 				{
 					"type": "float",
@@ -94474,12 +94842,28 @@
 			"comment": "Always returns zero.",
 			"params": [
 				{
-					"type": "Vector3",
-					"name": "pos1"
+					"type": "float",
+					"name": "pos1_X"
 				},
 				{
-					"type": "Vector3",
-					"name": "pos2"
+					"type": "float",
+					"name": "pos1_Y"
+				},
+				{
+					"type": "float",
+					"name": "pos1_Z"
+				},
+				{
+					"type": "float",
+					"name": "pos2_X"
+				},
+				{
+					"type": "float",
+					"name": "pos2_Y"
+				},
+				{
+					"type": "float",
+					"name": "pos2_Z"
 				},
 				{
 					"type": "Any",
@@ -95137,12 +95521,28 @@
 			"comment": "",
 			"params": [
 				{
-					"type": "Vector3",
-					"name": "camPos"
+					"type": "float",
+					"name": "camPosX"
 				},
 				{
-					"type": "Vector3",
-					"name": "camDir"
+					"type": "float",
+					"name": "camPosY"
+				},
+				{
+					"type": "float",
+					"name": "camPosZ"
+				},
+				{
+					"type": "float",
+					"name": "camDirX"
+				},
+				{
+					"type": "float",
+					"name": "camDirY"
+				},
+				{
+					"type": "float",
+					"name": "camDirZ"
 				}
 			],
 			"return_type": "void",
@@ -111772,12 +112172,28 @@
 			"comment": "",
 			"params": [
 				{
-					"type": "Vector3",
-					"name": "vStart"
+					"type": "float",
+					"name": "vStartX"
 				},
 				{
-					"type": "Vector3",
-					"name": "vEnd"
+					"type": "float",
+					"name": "vStartY"
+				},
+				{
+					"type": "float",
+					"name": "vStartZ"
+				},
+				{
+					"type": "float",
+					"name": "vEndX"
+				},
+				{
+					"type": "float",
+					"name": "vEndY"
+				},
+				{
+					"type": "float",
+					"name": "vEndZ"
 				},
 				{
 					"type": "float",
@@ -119121,8 +119537,16 @@
 					"name": "radius"
 				},
 				{
-					"type": "Vector3",
-					"name": "vWeaponPosition"
+					"type": "float",
+					"name": "vWeaponPositionX"
+				},
+				{
+					"type": "float",
+					"name": "vWeaponPositionY"
+				},
+				{
+					"type": "float",
+					"name": "vWeaponPositionZ"
 				},
 				{
 					"type": "Hash",
@@ -119141,20 +119565,44 @@
 			"comment": "Full list of weapons by DurtyFree: https://github.com/DurtyFree/gta-v-data-dumps/blob/master/weapons.json",
 			"params": [
 				{
-					"type": "Vector3",
-					"name": "VecCoors1"
+					"type": "float",
+					"name": "VecCoors1_X"
 				},
 				{
-					"type": "Vector3",
-					"name": "VecCoors2"
+					"type": "float",
+					"name": "VecCoors1_Y"
+				},
+				{
+					"type": "float",
+					"name": "VecCoors1_Z"
+				},
+				{
+					"type": "float",
+					"name": "VecCoors2_X"
+				},
+				{
+					"type": "float",
+					"name": "VecCoors2_Y"
+				},
+				{
+					"type": "float",
+					"name": "VecCoors2_Z"
 				},
 				{
 					"type": "float",
 					"name": "AreaWidth"
 				},
 				{
-					"type": "Vector3",
-					"name": "vWeaponPosition"
+					"type": "float",
+					"name": "vWeaponPosition_X"
+				},
+				{
+					"type": "float",
+					"name": "vWeaponPosition_Y"
+				},
+				{
+					"type": "float",
+					"name": "vWeaponPosition_Z"
 				},
 				{
 					"type": "Hash",
